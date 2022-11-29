@@ -409,7 +409,20 @@ public class BoardDAO {
 		try {
 			conn = this.dataSource.getConnection();
 			
-			String sql = "delete from album_board1 where seq = ? and password = ?";
+			
+			String sql = "select filename from album_board1 where seq = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, to.getSeq());
+			
+			rs = pstmt.executeQuery();
+			
+			if( rs.next() ) {
+				to.setFilename( rs.getString( "filename" ) );
+			}
+			
+			
+			
+			sql = "delete from album_board1 where seq = ? and password = ?";
 			pstmt = conn.prepareStatement( sql );
 			pstmt.setString( 1, to.getSeq() );
 			pstmt.setString( 2, to.getPassword() );
@@ -417,6 +430,10 @@ public class BoardDAO {
 			int result = pstmt.executeUpdate();
 			if( result == 1) {
 				flag = 0;
+				
+				File file = new File( uploadPath, to.getFilename() );
+				file.delete();
+				
 			} else {
 				flag = 1;
 			}
@@ -429,4 +446,5 @@ public class BoardDAO {
 		
 		return flag;
 	}
+	
 }
