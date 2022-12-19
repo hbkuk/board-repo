@@ -1,0 +1,133 @@
+글 분류번호	w_cno		int		primary key auto_increment
+글 메인 주제	w_mtopic		varchar(200)	not null
+글 서브 주제	w_stopic		varchar(200)	not null
+
+샘플 데이터
+insert into OOOO ( 1, "Q&A", "자바" );
+insert into OOOO ( 1, "Q&A", "스프링" );
+
+
+String sql =
+
+insert into 0000 ( 0, ?, ?); 
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+글 번호		w_no		int		primary key auto_increment
+글 제목		w_subject		varchar(200)	not null
+글 내용		w_content		varchar(2000)	
+글 작성일		w_date		datetime		not null
+글 작성 아이피	w_ip		varchar(15)	not null
+글 첨부 파일명	w_filename	varchar(100)	
+글 첨부 파일크기	w_filesize		int		
+글 그룹 번호	w_grp		int		not null
+글 그룹 내부 순서	w_grps		int		not null
+글 그룹 깊이	w_grpl		int		not null
+글 좋아요		w_like		int		not null
+글 싫어요		w_hate		int		not null
+글 신고횟수	w_report		int		not null
+글 수정일		w_mdate		datetime
+글 수정횟수	w_mno		int		not null
+글 분류번호	w_cno		int		not null
+
+
+
+null 이 있어서 밸류로 가야겠음 ...
+insert into 0000 () value () ,... 이걸로 해야함 /.
+
+
+insert into 0000 ( 0, ?, ?, now(), ?, ?, ?, 0, 0, 0); 
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+권한 번호		m_rno		int		primary key auto_increment
+권한명		m_rname		varchar(100)	not null
+
+샘플 데이터 
+insert into role ( 1, "member" );
+insert into role ( 2, "manager" );
+insert into role ( 3, "super" );
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+member
+
+회원번호		m_ino		int		primary key auto_increment
+회원 아이디	m_id		varchar(100)	not null
+회원 닉네임	m_nick		varchar(100)	not null
+회원 이름		m_name		varchar(100)	not null
+회원 이메일	m_mail		varchar(100)	not null
+회원 비밀번호	m_pw		varchar(100)	not null	
+회원 비밀번호 확인	m_pw_confirm	varchar(100)	not null
+회원 가입일	m_rdate		varchar(100)	not null
+권한 번호		m_rno		int		not null
+
+
+create table member ( 
+
+m_ino int primary key auto_increment,
+m_id varchar(100) not null,				<==== unique로
+m_nick varchar(100) not null,			<==== unique로
+m_name varchar(100) not null,			
+m_mail varchar(100) not null,			<==== unique로
+m_pw varchar(100) not null,	
+m_pw_confirm varchar(100) not null,
+m_rdate varchar(100) not null,
+m_rno int not null
+
+);
+
+
+
+샘플 데이터 
+insert into member values (0, "qudrnr132", "자바짱", "황병국", "qudrnr132@naver.com", "qudrnr132!", "qudrnr132!", now(), 1);
+insert into member values (0, "qudrnr0736", "자바짱짱맨", "황병국", "qudrnr0736@naver.com", "qudrnr132!", "qudrnr132!", now(), 1);
+
+String sql =
+insert into member value (0, ?, ?, ?, ?, ?, ?, now(), 1);
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+Mailsender
+
+전송번호		s_ino		int				primary key auto_increment
+회원 이메일	s_mail		varchar(100)	not null
+인증번호		s_cno		varchar(6)		not null
+전송일		s_date		datetime		not null
+
+create table mailsender (
+
+s_ino int primary key auto_increment,
+s_mail varchar(100) not null,
+s_cno varchar(6) not null,
+s_date datetime not null
+
+);
+
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+
+
+
+<제약조건 1>
+ALTER TABLE `member` ADD CONSTRAINT `FK_member_role_TO_member_1` FOREIGN KEY (
+	`m_rno`
+)
+REFERENCES `member_role` (
+	`m_rno`
+);
+
+<제약조건 2>
+ALTER TABLE `writing` ADD CONSTRAINT `FK_writing_class_TO_writing_1` FOREIGN KEY (
+	`w_cno`
+)
+REFERENCES `writing_class` (
+	`w_cno`
+);
+
+<제약조건 3>
+ALTER TABLE `writing` ADD CONSTRAINT `FK_member_TO_writing_1` FOREIGN KEY (
+	`m_ino`
+)
+REFERENCES `member` (
+	`m_ino`
+);
