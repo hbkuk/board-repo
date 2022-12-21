@@ -1,0 +1,53 @@
+테이블명: jboard
+
+
+글 번호		seq		int				primary key auto_increment,
+글 그룹		grp		int				not null,	
+글 그룹 내부 순서	grps	int				not null,
+글 그룹 깊이 	grpl	int				not noll,
+제목		subject		varchar(2000)	not null, 
+이름		name		varchar(20)		not null,
+메일		mail		varchar(100)			,
+비밀번호	password	varchar(20)		not null,
+본문		content		varchar(2000)			,
+조회수		hit      	int(11)			not null,
+좋아요		like		int(11)			not null,
+싫어요		hate		int(11)			not null,
+등록일자	wdate		date			not null
+
+ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+테이블 생성
+
+create table jboard (
+	seq int primary key auto_increment,
+	grp int not null,	
+	grps int not null,
+	grpl int not null,
+	subject varchar(2000) not null, 
+	name varchar(20) not null,
+	mail varchar(100),
+	password varchar(20) not null,
+	content varchar(2000),
+	hit int not null,
+	love int not null,
+	hate int not null,
+	wip varchar(15) not null,
+ 	wdate datetime not null
+);
+
+
+// 샘플 데이터
+insert into jboard values (0, last_insert_id()+1, 0, 0, "제목test", "이름test", "메일test", "비밀번호test", "내용test", 0, 0, 0, "000.000.000.000", now() )
+
+// last_insert_id+1 작동안되서
+insert into jboard values (0, last_insert_id()+1, 0, 0, "제목test", "이름test", "메일test", "비밀번호test", "내용test", 0, 0, 0, "000.000.000.000", now() )
+
+// write 쿼리문 										
+String sql = "insert into jboard values (0, last_insert_id()+1, 0, 0, ?, ?, ?, ?, ?, 0, 0, 0, ?, now() )";
+
+// jsp 테스트 완료 
+?subject=테스트&name=홍길동&mail=test@test.com&password=1234&content=테스트내용&wip=000.0000.0000
+
+
+
+
