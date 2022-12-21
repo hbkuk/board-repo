@@ -1,0 +1,41 @@
+게시판 테이블
+create table album_cmt_board1 (
+	seq int not null primary key auto_increment,
+	subject varchar(150) not null,
+	writer varchar(12) not null,
+	mail varchar(50),	
+	password varchar(12) not null,
+	content varchar(2000),	
+	filename varchar(200) not null,
+	filesize int not null,
+	latitude varchar(12),
+	longitude varchar(12),
+	cmt int not null,
+	hit int not null,
+	wip varchar(150) not null,
+	wdate datetime not null
+
+);
+
+댓글 테이블
+create table album_cmt_comment1 (
+	seq int not null primary key auto_increment,
+	pseq int not null,
+	writer varchar(12) not null,
+	password	 varchar(12) not null,
+	content varchar(2000) not null,
+	wdate datetime not null
+
+);
+
+// 앨범 테이블 샘플 데이터
+insert into album_cmt_board1 values ( 0, "테스트1", "테스트2", "테스트3@메일", "1234", "테스트4", "test5.jpg", "10", 33.431441, 126.874237, 1, 10, "000.000.000", now() );
+insert into album_cmt_board1 values ( 0, "테스트1", "테스트2", "테스트3@메일", "1234", "테스트4", "test5.jpg", "10", 33.431441, 126.874237, 0, 10, "000.000.000", now() );
+insert into album_cmt_board1 values ( 0, "테스트1", "테스트2", "테스트3@메일", "1234", "테스트4", "test5.jpg", "10", 33.431441, 126.874237, 0, 10, "000.000.000", now() );
+insert into album_cmt_board1 values ( 0, "테스트1", "테스트2", "테스트3@메일", "1234", "테스트4", "test5.jpg", "10", 33.431441, 126.874237, 0, 10, "000.000.000", now() );
+insert into album_cmt_board1 values ( 0, "테스트1", "테스트2", "테스트3@메일", "1234", "테스트4", "test5.jpg", "10", 33.431441, 126.874237, 1, 10, "000.000.000", now() );
+insert into album_cmt_board1 values ( 0, "테스트1", "테스트2", "테스트3@메일", "1234", "테스트4", "test5.jpg", "10", 33.431441, 126.874237, 0, 10, "000.000.000", now() );
+
+// 댓글 테이블 샘플 데이터
+insert into album_cmt_comment1 values ( 0, 1, "테스트1-1", "1234", "테스트2-1", now() );
+insert into album_cmt_comment1 values ( 0, 5, "테스트1-1", "1234", "테스트2-1", now() );
